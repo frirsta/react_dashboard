@@ -118,20 +118,18 @@ export default function TesterTable() {
                 <TableCell align="right">{item.email}</TableCell>
                 <TableCell align="right">{item.role}</TableCell>
                 <TableCell align="right">
-                  <Button
-                    onClick={handleDelete}
-                    variant="outlined"
-                    startIcon={<DeleteIcon />}
-                  >
+                  <Button onClick={handleDelete} variant="outlined">
                     Delete
+                    <DeleteIcon />
                   </Button>
-                  <Button
+                  <Link
+                    to={`/edittester/` + item.id}
                     onClick={handleEdit}
                     variant="outlined"
-                    startIcon={<EditIcon />}
                   >
                     Edit
-                  </Button>
+                    <EditIcon />
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}

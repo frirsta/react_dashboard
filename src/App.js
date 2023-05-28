@@ -8,6 +8,7 @@ import Tester from "./components/Tester";
 import AddTester from "./pages/AddTester";
 import TesterLogin from "./pages/tester/TesterLogin";
 import OfflineNavbar from "./components/OfflineNavbar";
+import EditTester from "./pages/tester/EditTester";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/tester" element={<Tester />} />
       <Route path="/create" element={<AddTester />} />
+      <Route path="/edittester/:id" element={<EditTester />} />
     </Routes>
     </BrowserRouter>
   </div>

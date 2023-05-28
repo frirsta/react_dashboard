@@ -11,7 +11,7 @@
     {
       "id": "tester",
       "email": "tester@gmail.com",
-      "firstName": "John",
+      "firstName": "Jane",
       "lastName": "Doe",
       "password": "frirsta",
       "role": "tester"
@@ -19,15 +19,15 @@
     {
       "id": "tester1",
       "email": "tester@gmail.com",
-      "firstName": "tester",
-      "lastName": "tester",
+      "firstName": "tester1",
+      "lastName": "tester1",
       "password": "frirsta",
       "role": "tester"
     },
     {
       "id": "tester2",
       "email": "tester@gmail.com",
-      "firstName": "john",
+      "firstName": "tester2",
       "lastName": "doe",
       "password": "frirsta",
       "role": "tester"
