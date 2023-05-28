@@ -4,19 +4,21 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "./Avatar";
-import styles from '../styles/Navbar.module.css';
+import styles from "../styles/Navbar.module.css";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 
 const drawerWidth = 240;
 
@@ -86,6 +88,26 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function NavBar() {
+  const [displayUsername, setDisplayUsername] = useState("");
+  const [displayMenu, setDisplayMenu] = useState(false);
+  const location = useLocation();
+  const usenavigate = useNavigate();
+
+  useEffect(() => {
+    console.log(location);
+    if (location.pathname === "/login" || location.pathname === "/register") {
+      setDisplayMenu(false);
+    } else {
+      setDisplayMenu(true);
+      let username = sessionStorage.getItem("username");
+      if (username === "" || username === null) {
+        usenavigate("/login");
+      } else {
+        setDisplayUsername(username);
+      }
+    }
+  }, [location, usenavigate]);
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -98,60 +120,78 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton className={styles.ListItemButton}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+    <div>
+      {displayMenu && (
+        <Box sx={{ display: "flex" }}>
+          <AppBar position="fixed" open={open}>
+            <Toolbar className={styles.TopNavBarContainer}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  marginRight: 5,
+                  ...(open && { display: "none" }),
                 }}
               >
-                <Avatar />
-              </ListItemIcon>
-              <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
-    </Box>
+                <MenuIcon />
+              </IconButton>
+
+              <ul className={styles.NavbarLinks}>
+                {displayUsername}
+
+                <NavLink className={styles.NavLink} to={"/tester"}>
+                  <SupportAgentIcon />
+                  Testers
+                </NavLink>
+                <NavLink className={styles.NavLink} to={"/login"}>
+                  <LogoutIcon />
+                  Sign out
+                </NavLink>
+              </ul>
+            </Toolbar>
+          </AppBar>
+          <Drawer variant="permanent" open={open}>
+            <DrawerHeader>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </DrawerHeader>
+            <Divider />
+            <List>
+              <ListItem disablePadding sx={{ display: "block" }}>
+                <ListItemButton
+                  className={styles.ListItemButton}
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Avatar />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Profile"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          </Drawer>
+        </Box>
+      )}
+    </div>
   );
 }

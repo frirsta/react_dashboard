@@ -1,12 +1,75 @@
 {
   "users": [
     {
-      "firstName": "name",
-      "lastName": "last name",
+      "firstName": "admin",
+      "lastName": "lastname",
       "email": "admin@gmail.com",
       "id": "admin",
-      "password1": "frirsta",
-      "password2": "frirsta"
+      "password": "frirsta",
+      "role": "admin"
+    },
+    {
+      "id": "tester",
+      "email": "tester@gmail.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "password": "frirsta",
+      "role": "tester"
+    },
+    {
+      "id": "tester1",
+      "email": "tester@gmail.com",
+      "firstName": "tester",
+      "lastName": "tester",
+      "password": "frirsta",
+      "role": "tester"
+    },
+    {
+      "id": "tester2",
+      "email": "tester@gmail.com",
+      "firstName": "john",
+      "lastName": "doe",
+      "password": "frirsta",
+      "role": "tester"
+    },
+    {
+      "id": "tester4",
+      "email": "tester@gmail.com",
+      "firstName": "john",
+      "lastName": "doe",
+      "password": "frirsta",
+      "role": "tester"
+    },
+    {
+      "id": "tester5",
+      "email": "tester@gmail.com",
+      "firstName": "john",
+      "lastName": "doe",
+      "password": "frirsta",
+      "role": "tester"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "customer",
+      "addAccess": true,
+      "editAccess": true,
+      "deleteAccess": true
+    },
+    {
+      "role": "tester",
+      "menu": "customer",
+      "addAccess": false,
+      "editAccess": true,
+      "deleteAccess": false
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "addAccess": false,
+      "editAccess": false,
+      "deleteAccess": false
     }
   ]
 }

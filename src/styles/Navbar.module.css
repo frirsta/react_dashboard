@@ -2,3 +2,19 @@
     padding: 0px!important;
     padding-left: 10px!important;
 }
+
+.TopNavBarContainer{
+    align-items: center;
+}
+
+.NavLink{
+    color: #fff!important;
+}
+.NavbarLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}

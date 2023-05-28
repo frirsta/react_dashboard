@@ -3,23 +3,23 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "../../styles/Form.module.css";
+import LoginIcon from "@mui/icons-material/Login";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [password, setPassword] = useState("");
   const [id, setId] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let data = {firstName, lastName, email, id, password1, password2}
+    let data = {firstName, lastName, email, id, password}
     console.log(data);
     fetch("http://localhost:8000/users", {
       method: "POST",
@@ -102,28 +102,21 @@ const Register = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 required
-                onChange={e=>setPassword1(e.target.value)}
-                value={password1}
-                name="password1"
+                onChange={e=>setPassword(e.target.value)}
+                value={password}
+                name="password"
                 type="password"
                 placeholder="Password"
               />
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group className="mb-3" controlId="formBasicPassword2">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                required
-                onChange={e=>setPassword2(e.target.value)}
-                value={password2}
-                name="password2"
-                type="password"
-                placeholder="Password"
-              />
-            </Form.Group>
-          </Col>
+
         </Row>
+        Already have an account? 
+        <NavLink className={styles.NavLink} to={"/login"}>
+                <LoginIcon />
+                Sign in
+              </NavLink>
         <Button variant="primary" type="submit">
           Submit
         </Button>
