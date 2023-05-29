@@ -9,9 +9,12 @@ import AddTester from "./pages/AddTester";
 import TesterLogin from "./pages/tester/TesterLogin";
 import OfflineNavbar from "./components/OfflineNavbar";
 import EditTester from "./pages/tester/EditTester";
+import TesterDetails from "./pages/tester/TesterDetails";
+import { CurrentUserProvider } from "./context/CurrentUserContext";
 
 function App() {
   return (
+    <CurrentUserProvider>
   <div>
     <ToastContainer theme="colored"></ToastContainer>
     <BrowserRouter>
@@ -23,11 +26,13 @@ function App() {
       <Route path="/testerlogin" element={<TesterLogin />} />
       <Route path="/register" element={<Register />} />
       <Route path="/tester" element={<Tester />} />
+      <Route path="/tester/:id" element={<TesterDetails />} />
       <Route path="/create" element={<AddTester />} />
       <Route path="/edittester/:id" element={<EditTester />} />
     </Routes>
     </BrowserRouter>
   </div>
+  </CurrentUserProvider>
   );
 }
 

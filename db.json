@@ -59,14 +59,14 @@
     },
     {
       "role": "tester",
-      "menu": "customer",
+      "menu": "tester",
       "addAccess": false,
       "editAccess": true,
       "deleteAccess": false
     },
     {
       "role": "user",
-      "menu": "customer",
+      "menu": "user",
       "addAccess": false,
       "editAccess": false,
       "deleteAccess": false
