@@ -9,12 +9,42 @@
 
 .NavLink{
     color: #fff!important;
+    display: flex;
 }
 .NavbarLinks{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     width: 100%;
-    padding: 0px;
+    padding-right: 10px;
     margin: 0px;
+}
+
+.NavbarIcon{
+    width: 40px!important;
+    height: 40px!important;
+}
+.NavbarText{
+    color: teal;
+}
+.ListContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+   
+}
+
+.NavbarAccount{
+    margin: 20px 0;
+}
+
+.NavbarLogo{
+    background-color: #1976d2;
+    justify-content: space-between!important;
+    font-size: 30px;
+}
+
+.NavbarContainer{
+    border-right: 1px #1976d2!important;
 }

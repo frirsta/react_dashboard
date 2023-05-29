@@ -13,19 +13,20 @@ const EditTester = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
-  const fetchData = () => {
-    fetch("http://localhost:8000/users/" + id)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      });
-  };
+
   useEffect(() => {
+    const fetchData = () => {
+      fetch("http://localhost:8000/users/" + id)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setData(data);
+          console.log(data);
+        });
+    };
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,11 +55,10 @@ const EditTester = () => {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 autoComplete="new-password"
-                required
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 name="email"
                 type="email"
-                value={data.email}
+                placeholder={data.email}
               />
             </Form.Group>
           </Col>
@@ -68,9 +68,8 @@ const EditTester = () => {
               <Form.Control
                 disabled
                 autoComplete="new-password"
-                required
                 onChange={(e) => setData({ ...data, id: e.target.value })}
-                value={data.id}
+                placeholder={data.id}
                 name="id"
                 type="text"
               />
@@ -83,12 +82,11 @@ const EditTester = () => {
               <Form.Label>First name</Form.Label>
               <Form.Control
                 autoComplete="new-password"
-                required
                 onChange={(e) =>
                   setData({ ...data, firstName: e.target.value })
                 }
                 name="firstName"
-                value={data.firstName}
+                placeholder={data.firstName}
                 type="text"
               />
             </Form.Group>
@@ -98,9 +96,8 @@ const EditTester = () => {
               <Form.Label>Last name</Form.Label>
               <Form.Control
                 autoComplete="new-password"
-                required
                 onChange={(e) => setData({ ...data, lastName: e.target.value })}
-                value={data.lastName}
+                placeholder={data.lastName}
                 name="lastName"
                 type="text"
               />
@@ -113,12 +110,10 @@ const EditTester = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 autoComplete="new-password"
-                required
                 onChange={(e) => setData({ ...data, password: e.target.value })}
-                value={data.password}
+                placeholder="Password"
                 name="password"
                 type="password"
-                placeholder="Password"
               />
             </Form.Group>
           </Col>

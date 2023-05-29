@@ -11,42 +11,39 @@
     {
       "id": "tester",
       "email": "tester@gmail.com",
-      "firstName": "Jane",
+      "firstName": "tester",
       "lastName": "Doe",
       "password": "frirsta",
-      "role": "tester"
+      "role": "tester",
+      "image": [
+        {}
+      ]
     },
     {
-      "id": "tester1",
-      "email": "tester@gmail.com",
-      "firstName": "tester1",
+      "firstName": "tester4",
       "lastName": "tester1",
+      "email": "tester1@gmail.com",
+      "id": "tester1",
       "password": "frirsta",
+      "image": "blob:http://localhost:3000/c9f08398-dddb-4273-9f13-b2a4bf820751",
       "role": "tester"
     },
     {
       "id": "tester2",
-      "email": "tester@gmail.com",
+      "email": "tester2@gmail.com",
       "firstName": "tester2",
-      "lastName": "doe",
+      "lastName": "tester2",
       "password": "frirsta",
       "role": "tester"
     },
     {
-      "id": "tester4",
-      "email": "tester@gmail.com",
-      "firstName": "john",
-      "lastName": "doe",
+      "firstName": "tester3",
+      "lastName": "tester3",
+      "email": "tester3@gmail.com",
+      "id": "tester3",
       "password": "frirsta",
-      "role": "tester"
-    },
-    {
-      "id": "tester5",
-      "email": "tester@gmail.com",
-      "firstName": "john",
-      "lastName": "doe",
-      "password": "frirsta",
-      "role": "tester"
+      "role": "tester",
+      "image": ""
     }
   ],
   "roleaccess": [

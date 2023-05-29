@@ -16,9 +16,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "./Avatar";
 import styles from "../styles/Navbar.module.css";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const drawerWidth = 240;
 
@@ -139,12 +141,6 @@ export default function NavBar() {
               </IconButton>
 
               <ul className={styles.NavbarLinks}>
-                {displayUsername}
-
-                <NavLink className={styles.NavLink} to={"/tester"}>
-                  <SupportAgentIcon />
-                  Testers
-                </NavLink>
                 <NavLink className={styles.NavLink} to={"/login"}>
                   <LogoutIcon />
                   Sign out
@@ -153,7 +149,8 @@ export default function NavBar() {
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
+            <DrawerHeader className={styles.NavbarLogo}>
+            Teztable
               <IconButton onClick={handleDrawerClose}>
                 {theme.direction === "rtl" ? (
                   <ChevronRightIcon />
@@ -161,10 +158,100 @@ export default function NavBar() {
                   <ChevronLeftIcon />
                 )}
               </IconButton>
+              
             </DrawerHeader>
             <Divider />
-            <List>
-              <ListItem disablePadding sx={{ display: "block" }}>
+            <div className={styles.ListContainer}>
+              <List>
+                <Link className={styles.NavLink} to={"/tester"}>
+                  <ListItem disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      className={styles.ListItemButton}
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <BadgeIcon className={styles.NavbarIcon} />
+                      </ListItemIcon>
+                      <ListItemText
+                        className={styles.NavbarText}
+                        primary={"Testers"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      ></ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+                <Link className={styles.NavLink} to={"/testlist"}>
+                  <ListItem disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      className={styles.ListItemButton}
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <AssignmentIcon className={styles.NavbarIcon} />
+                      </ListItemIcon>
+                      <ListItemText
+                        className={styles.NavbarText}
+                        primary={"Testlist"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      ></ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+
+                <Link className={styles.NavLink} to={"/createtest"}>
+                  <ListItem disablePadding sx={{ display: "block" }}>
+                    <ListItemButton
+                      className={styles.ListItemButton}
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <NoteAddIcon className={styles.NavbarIcon} />
+                      </ListItemIcon>
+                      <ListItemText
+                        className={styles.NavbarText}
+                        primary={"Add test"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      ></ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+              </List>
+
+              <ListItem
+                className={styles.NavbarAccount}
+                disablePadding
+                sx={{ display: "block" }}
+              >
                 <ListItemButton
                   className={styles.ListItemButton}
                   sx={{
@@ -183,12 +270,15 @@ export default function NavBar() {
                     <Avatar />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Profile"
+                    className={styles.NavbarText}
+                    primary={displayUsername}
                     sx={{ opacity: open ? 1 : 0 }}
-                  />
+                  >
+                    {displayUsername}
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
-            </List>
+            </div>
           </Drawer>
         </Box>
       )}

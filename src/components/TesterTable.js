@@ -24,50 +24,54 @@ export default function TesterTable() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const getUserAccess = () => {
+      const userrole =
+        sessionStorage.getItem("userrole") != null
+          ? sessionStorage.getItem("userrole").toString()
+          : "";
+      fetch(
+        "http://localhost:8000/roleaccess/?role=" + userrole + "&menu=customer"
+      )
+        .then((res) => {
+          if (!res.ok) {
+            navigate("/");
+            toast.warning("Staff page");
+            return false;
+          }
+          return res.json();
+        })
+        .then((res) => {
+          if (res.length > 0) {
+            setViewAccess(true);
+            let userObject = res[0];
+            setEditAccess(userObject.editAccess);
+            setAddAccess(userObject.addAccess);
+            setDeleteAccess(userObject.deleteAccess);
+         
+          } else {
+            navigate("/");
+            toast.warning("Staff page");
+          }
+        });
+    };
+
+    const getTester = () => {
+      fetch("http://localhost:8000/users?role=tester")
+        .then((res) => {
+          if (!res.ok) {
+            return false;
+          }
+          return res.json();
+        })
+        .then((res) => {
+          setTesterList(res);
+        });
+    };
+
     getUserAccess();
     getTester();
-  }, []);
-  const getTester = () => {
-    fetch("http://localhost:8000/users?role=tester")
-      .then((res) => {
-        if (!res.ok) {
-          return false;
-        }
-        return res.json();
-      })
-      .then((res) => {
-        setTesterList(res);
-      });
-  };
-  const getUserAccess = () => {
-    const userrole =
-      sessionStorage.getItem("userrole") != null
-        ? sessionStorage.getItem("userrole").toString()
-        : "";
-    fetch(
-      "http://localhost:8000/roleaccess/?role=" + userrole + "&menu=customer"
-    )
-      .then((res) => {
-        if (!res.ok) {
-          navigate("/");
-          toast.warning("Staff page");
-          return false;
-        }
-        return res.json();
-      })
-      .then((res) => {
-        if (res.length > 0) {
-          setViewAccess(true);
-          let userObject = res[0];
-          setEditAccess(userObject.editAccess);
-          setAddAccess(userObject.addAccess);
-          setDeleteAccess(userObject.deleteAccess);
-        } else {
-          navigate("/");
-          toast.warning("Staff page");
-        }
-      });
-  };
+  }, [navigate, viewAccess]);
+
   const handleAdd = () => {
     if (addAccess) {
       toast.success("Added");
@@ -111,7 +115,7 @@ export default function TesterTable() {
             {testerList.map((item) => (
               <TableRow key={item.id}>
                 <TableCell component="th" scope="row">
-                  {item.id}
+               <Link to={`/tester/${item.id}`}>{item.id}</Link>
                 </TableCell>
                 <TableCell align="right">{item.firstName}</TableCell>
                 <TableCell align="right">{item.lastName}</TableCell>
