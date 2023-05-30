@@ -16,11 +16,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function TesterTable() {
   const [testerList, setTesterList] = useState([]);
-  const [editAccess, setEditAccess] = useState(false);
-  const [viewAccess, setViewAccess] = useState(false);
-  const [addAccess, setAddAccess] = useState(false);
-  const [deleteAccess, setDeleteAccess] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,11 +37,7 @@ export default function TesterTable() {
         })
         .then((res) => {
           if (res.length > 0) {
-            setViewAccess(true);
-            let userObject = res[0];
-            setEditAccess(userObject.editAccess);
-            setAddAccess(userObject.addAccess);
-            setDeleteAccess(userObject.deleteAccess);
+
          
           } else {
             navigate("/");
@@ -70,28 +61,28 @@ export default function TesterTable() {
 
     getUserAccess();
     getTester();
-  }, [navigate, viewAccess]);
+  }, [navigate]);
 
   const handleAdd = () => {
-    if (addAccess) {
-      toast.success("Added");
-    } else {
-      toast.warning("You don't have access to add");
-    }
+    // if (addAccess) {
+    //   toast.success("Added");
+    // } else {
+    //   toast.warning("You don't have access to add");
+    // }
   };
   const handleDelete = () => {
-    if (deleteAccess) {
-      toast.success("Deleted");
-    } else {
-      toast.warning("You don't have access to delete");
-    }
+    // if (deleteAccess) {
+    //   toast.success("Deleted");
+    // } else {
+    //   toast.warning("You don't have access to delete");
+    // }
   };
   const handleEdit = () => {
-    if (editAccess) {
-      toast.success("Edited");
-    } else {
-      toast.warning("You don't have access to edit");
-    }
+    // if (editAccess) {
+    //   toast.success("Edited");
+    // } else {
+    //   toast.warning("You don't have access to edit");
+    // }
   };
   return (
     <div className={styles.Table}>

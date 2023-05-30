@@ -10,9 +10,10 @@ import TesterLogin from "./pages/tester/TesterLogin";
 import OfflineNavbar from "./components/OfflineNavbar";
 import EditTester from "./pages/tester/EditTester";
 import TesterDetails from "./pages/tester/TesterDetails";
-import TestList from "./pages/tests/AddTest";
+import TestList from "./pages/tests/TestList";
 import AddTest from "./pages/tests/AddTest";
 import EditTest from "./pages/tests/EditTest";
+import TestDetails from "./pages/tests/TestDetails";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
           <Route path="/create" element={<AddTester />} />
           <Route path="/edittester/:id" element={<EditTester />} />
           <Route path="/testlist" element={<TestList />} />
-          <Route path="/createtest" element={<AddTest />} />
+          <Route path="/addtest" element={<AddTest />} />
+          <Route path="/test/:id" element={<TestDetails />} />
           <Route path="/edittest/:id" element={<EditTest />} />
         </Routes>
       </BrowserRouter>

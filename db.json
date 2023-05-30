@@ -14,59 +14,53 @@
       "firstName": "tester",
       "lastName": "Doe",
       "password": "frirsta",
-      "role": "tester",
-      "image": [
-        {}
-      ]
+      "role": "admin"
     },
     {
-      "firstName": "tester4",
-      "lastName": "tester1",
-      "email": "tester1@gmail.com",
       "id": "tester1",
-      "password": "frirsta",
-      "image": "blob:http://localhost:3000/c9f08398-dddb-4273-9f13-b2a4bf820751",
-      "role": "tester"
-    },
-    {
-      "id": "tester2",
-      "email": "tester2@gmail.com",
-      "firstName": "tester2",
-      "lastName": "tester2",
+      "email": "tester1@gmail.com",
+      "firstName": "tester1",
+      "lastName": "teste1",
       "password": "frirsta",
       "role": "tester"
     },
     {
-      "firstName": "tester3",
-      "lastName": "tester3",
-      "email": "tester3@gmail.com",
-      "id": "tester3",
+      "id": "a",
+      "email": "admin@gmail.com",
+      "firstName": "a",
+      "lastName": "a",
       "password": "frirsta",
-      "role": "tester",
-      "image": ""
+      "role": "tester"
+    }
+  ],
+  "testobjects": [
+    {
+      "description": "text",
+      "caption": "text",
+      "deadline": "2023-05-12",
+      "owner": "a",
+      "id": 6
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras semper pellentesque nulla et sollicitudin. Nullam ex tortor, vehicula quis eros id, facilisis elementum arcu. Vestibulum lacinia egestas eros quis luctus. Phasellus hendrerit lectus nisl, in fermentum purus ornare eu. Morbi eleifend sapien diam, a tincidunt massa fermentum id.",
+      "caption": "Test View",
+      "deadline": "2023-06-18",
+      "owner": "a",
+      "id": 7
     }
   ],
   "roleaccess": [
     {
       "role": "admin",
-      "menu": "customer",
-      "addAccess": true,
-      "editAccess": true,
-      "deleteAccess": true
+      "menu": "customer"
     },
     {
       "role": "tester",
-      "menu": "tester",
-      "addAccess": false,
-      "editAccess": true,
-      "deleteAccess": false
+      "menu": "tester"
     },
     {
       "role": "user",
-      "menu": "user",
-      "addAccess": false,
-      "editAccess": false,
-      "deleteAccess": false
+      "menu": "user"
     }
   ]
 }

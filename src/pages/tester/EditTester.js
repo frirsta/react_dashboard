@@ -121,7 +121,6 @@ const EditTester = () => {
             <Box sx={{ display: "flex", gap: 2 }}>
               <label>Tester</label>
               <Radio
-                disabled
                 value="tester"
                 checked={data.role === "tester"}
                 onChange={(e) => setData({ ...data, role: e.target.value })}
@@ -130,7 +129,6 @@ const EditTester = () => {
               />
               <label>Admin</label>
               <Radio
-                disabled
                 value="admin"
                 checked={data.role === "admin"}
                 onChange={(e) => setData({ ...data, role: e.target.value })}

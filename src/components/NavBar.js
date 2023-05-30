@@ -218,7 +218,7 @@ export default function NavBar() {
                   </ListItem>
                 </Link>
 
-                <Link className={styles.NavLink} to={"/createtest"}>
+                <Link className={styles.NavLink} to={"/addtest"}>
                   <ListItem disablePadding sx={{ display: "block" }}>
                     <ListItemButton
                       className={styles.ListItemButton}
